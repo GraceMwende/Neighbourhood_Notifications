@@ -8,6 +8,20 @@ class Neighbourhood(models.Model):
   occupants_count = models.IntegerField()
   # admin = models.ForeignKey(Admin, on_delete=models.CASCADE)
 
+  def __str__(self):
+    return self.neighbourhood_name
+
+  def save_neighbourhood(self):
+    self.save()
+
+  def delete_neighbourhood(self):
+    self.delete()
+
+  @classmethod
+  def display_neighbourhhoods(cls):
+    neighbourhoods = cls.objects.all()
+    return neighbourhoods
+
 class Users(models.Model):
   user_name = models.CharField(max_length=30)
   user_id = models.IntegerField()
