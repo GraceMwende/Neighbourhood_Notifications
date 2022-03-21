@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile,Post
+from .models import Profile,Post,Comment
 
 
 # class UserRegisterForm(UserCreationForm):
@@ -28,4 +28,9 @@ class ProfileUpdateForm(forms.ModelForm):
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        exclude = ['user','pub_date','comments']
+        exclude = ['user','pub_date']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('comment',)

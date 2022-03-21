@@ -7,5 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
   path('',views.home,name='home'),
   path('tinymce/',include('tinymce.urls')),
-  path('new/post/',views.new_post,name='new-post')
+  path('new/post/',views.new_post,name='new-post'),
+  re_path('post/(\d+)',views.posts, name='posts'),
+  path('addcomment/<int:id>/',views.add_comment,name='add_comment')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -44,7 +44,6 @@ class Post(models.Model):
   title = models.CharField(max_length=100)
   photo = models.ImageField(upload_to='posts/')
   post = HTMLField()
-  comments = models.TextField(max_length=500)
   pub_date = models.DateTimeField(auto_now_add=True)
 
 
@@ -61,3 +60,11 @@ class Post(models.Model):
   def display_posts(cls):
     posts = cls.objects.all()
     return posts
+
+class Comment(models.Model):
+  post = models.ForeignKey(Post, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  comment = models.TextField(max_length=1000)
+
+  def __str__(self):
+    return self.user.username
