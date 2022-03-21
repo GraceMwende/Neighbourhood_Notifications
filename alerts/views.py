@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Neighbourhood,Post,Comment,Business
 from .forms import NewPostForm,CommentForm,BusinessForm
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -35,7 +36,7 @@ def new_post(request):
   return render(request, 'new_post.html',{'form':form})
 
 def add_comment(request,id):
-  # if request.user.is_authenticated:
+  if request.user.is_authenticated:
     post = Post.objects.get(id=id)
 
     if request.method == "POST":
@@ -50,12 +51,13 @@ def add_comment(request,id):
         return redirect("posts", post.id)
 
     else:
-      form = ReviewForm()
+      form = CommentForm()
     return render(request, 'post.html',{'form':form})
 
-  # else:
-  #   return redirect('/accounts/login')
+  else:
+    return redirect('/accounts/login')
 
+@login_required(login_url='/accounts/login/')
 def new_business(request):
     current_user = request.user
     

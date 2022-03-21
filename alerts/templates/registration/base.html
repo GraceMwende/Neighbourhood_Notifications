@@ -6,24 +6,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Review App</title>
+  {% if title%}
+
+  <title>{{title}}</title>
+
+  {%endif%}
 
   {% block styles %}
     {% bootstrap_css %}
-      <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <!-- <link rel="stylesheet" href="{% static 'css/base.css' %}"> -->
   {% endblock %}
 
   <script src="https://kit.fontawesome.com/cd8c47e466.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  {% include "navbar.html" %}
+  
   {% block content %}
-    <h1 class="text-danger text-center">base file</h1>
   {% endblock %}
 
   {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  {% bootstrap_javascript %}
   {% endblock %}
  
 </body>

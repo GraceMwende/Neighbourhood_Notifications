@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://kit.fontawesome.com/cd8c47e466.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}"><i class="fa fa-cube"></i> The <b>Hood</b></span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+        </ul>
+
+        <!-- <form class="d-flex" action="">
+          <input class="form-control me-2" type="search" name="project" placeholder="Search Projects" aria-label="Search">
+          <button class="btn btn-outline-secondary" type="submit">Submit</button>
+        </form> -->
+
+        <!-- search form end -->
+      </div>
+      <div class="dropdown mx-5">
+        {% if user.is_authenticated %}
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-user"></i>{{user.username}} <b class="caret"></b>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
+					<a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></a>
+					<a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
+					<div class="dropdown-divider"></div>
+					<a href="/logout" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></a>
+          <!-- <li><a class="dropdown-item" href="{% url 'home' %}"><i class="fa-solid fa-house-chimney"></i> Home</a></li>
+          <li><a class="dropdown-item" href=""><i class="fa-solid fa-circle-plus"></i> Submit site</a></li>
+          <li><a class="dropdown-item" href="/user"><i class="fa-solid fa-gear"></i>
+            My profile</a></li>
+            <li><a class="dropdown-item" href="/accounts/password/change"><i class="fa-solid fa-key"></i> Change Password</a></li>
+          <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li> -->
+        </ul>
+        <!-- <li class="nav-item">
+          <a class="btn btn-outline-primary nav-link" href="/user">{{user.username|title}}</a>
+        </li> -->
+        {% else %}
+       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/accounts/login">login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/accounts/register/">Register</a>
+       </li>
+       </ul>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</body>
+</html>
