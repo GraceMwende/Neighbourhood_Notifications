@@ -3,22 +3,20 @@
   <div class="container d-flex flex-wrap my-3">
       <div class="col-6">
         <div class="card">
-          <img src="{{project.project_image.url}}" class="img-responsive" alt="Project Image">
+          <img src="{{post.photo.url}}" class="img-thumbnail" alt="post Image">
   
     
         <div class="card-body">
-          <h1 class="card-title">{{project.project_title}}</h1>
+          <h1 class="card-title">{{post.title}}</h1>
       
       
           <!-- <div class="row">
-            <p>{{project.project_description | striptags}}</p>
+            <p>{{post.post_description | striptags}}</p>
           </div> -->
               <p class="card-text">{% autoescape on %}
-                {{project.project_description |safe}}
+                {{post.post |safe}}
               {% endautoescape %}</p>
-              <p class="text-end"><b>posted by</b> ~<i>{{project.user.username}}</i></p>
-
-              <a href="{{project.project_link}}" target="blank"><button class="btn btn-dark">View full project</button></a>
+              <p class="text-end"><b>posted by</b> ~<i>{{post.user.username}}</i></p>
         </div>
          </div>
       </div>
@@ -26,45 +24,30 @@
       <div class="col-5">
         <div class="card">
             <div class="card-body">
-              <h3 class="text-center">Add Reviews</h3>
-              <form action="{% url 'add_review' project.id%}" method="post">
+              <h3 class="text-center">Add Comment</h3>
+              <form action="{% url 'add_comment' post.id %}" method="post">
                   {% csrf_token %}
-                  <!-- <label for="rating">Rating</label>
-                  <input type="text" name="rating" class="form-control" id="">
-                  <br> -->
-                  <label for="rating">Rating</label>
-                  <select class="form-select form-select-lg mb-3" name="rating" aria-label=".form-select-lg example">
-                    <option selected>Select a rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-
-                  </select>
-                  <input type="submit" class="btn btn-danger" value="Add Review">
+                  <label for="comment">Comment</label>
+                  <textarea name="comment" class="form-control" id="comment" cols="30" rows="5"></textarea>
+                  <br>
+                  <input type="submit" class="btn btn-danger" value="Add Comment">
               </form>
             </div>
         </div>
 
         <div class="card mt-3">
           <div class="card-body">
-            <h2>Rates</h2>
-            {% for review in reviews %}
-                    <h5 class="text-start">{{review.user.username}}</h5>
-                    <h5>{{review.rating}}</h5>
-                    <p>{{review.comment}}</p>
+            <h2>Comments</h2>
+            {% for comment in comments %}
+                    <h5 class="text-start">{{comment.user.username}}</h5>
+                    <p>{{comment.comment}}</p>
                 
             {% endfor %}
           </div>
         </div>
   
       </div>
+    
 
   </div>
 {% endblock %}

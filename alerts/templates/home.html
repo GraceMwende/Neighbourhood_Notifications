@@ -12,7 +12,7 @@
       <div class="col-4">
          <div class="card my-3 mx-3">
           <ul class="meta">
-          <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By:{{post.user}}</a></li>
+          <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted  {{post.pub_date|timesince}} ago By:{{post.user}}</a></li>
           <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>Technology</a></li>
           <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
       </ul>
@@ -20,7 +20,7 @@
           <div class="card-body">
             <h5 class="card-title">{{post.title}}</h5>
             <p class="card-text">{{post.post |striptags }}</p>
-            <a href=""><button class="btn btn-dark">See more</button></a>  
+            <a href="{% url 'posts' post.id %}"><button class="btn btn-dark">See more</button></a>  
           </div>
     </div>
          </div>
