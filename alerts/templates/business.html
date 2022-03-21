@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+ {% for biz_item in business %}
+ <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+  <div class="icon"><i class="bx bxl-dribbble"></i></div>
+  <h4 class="title"><a href="">{{biz_item.business_name}}</a></h4>
+  <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+</div>
+ {% endfor %}
+</div>
+{% endblock %}

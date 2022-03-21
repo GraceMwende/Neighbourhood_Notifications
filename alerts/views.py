@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Neighbourhood,Post,Comment
-from .forms import NewPostForm,CommentForm
+from .models import Neighbourhood,Post,Comment,Business
+from .forms import NewPostForm,CommentForm,BusinessForm
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
@@ -55,3 +55,28 @@ def add_comment(request,id):
 
   # else:
   #   return redirect('/accounts/login')
+
+def new_business(request):
+    current_user = request.user
+    
+    if request.method == 'POST':
+      form = BusinessForm(request.POST)
+
+      if form.is_valid():
+        business = form.save(commit=False)
+        business.users = current_user
+        # post.profile = Profile.objects.filter(user = current_user).first()
+        business.save()
+      
+      return redirect('business')
+
+    else:
+      form = BusinessForm()
+    return render(request, 'new_business.html',{'form':form})
+
+def business(request):
+    business = Business.display_business()
+    return render(request,'business.html',{"business":business,})
+
+    return redirect('business')
+

@@ -34,9 +34,23 @@ class Users(models.Model):
 
 class Business(models.Model):
   business_name = models.CharField(max_length=30)
-  users = models.ForeignKey(Users, on_delete=models.CASCADE)
+  users = models.ForeignKey(User, on_delete=models.CASCADE)
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
   business_email_address = models.EmailField()
+
+  def __str__(self):
+    return f'{self. business_name} '
+
+  def save_business(self):
+    self.save()
+
+  def delete_business(self):
+    self.delete()
+
+  @classmethod
+  def display_business(cls):
+    posts = cls.objects.all()
+    return posts
 
 class Profile(models.Model):
   user =  models.OneToOneField(User, on_delete=models.CASCADE)
@@ -51,7 +65,7 @@ class Post(models.Model):
 
 
   def __str__(self):
-    return f'{self.user.username} Profile'
+    return f'{self.user.username}'
 
   def save_post(self):
     self.save()
