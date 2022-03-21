@@ -1,5 +1,73 @@
 {% extends 'base.html' %}
 {%block content %}
 {{block.super}}
-<h5>welcome</h5>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+<a href="{% url 'new-post' %}"><button class="btn btn-default">Create new post</button></a>
+<!-- bootsrap card -->
+<div class="container d-flex flex-wrap">
+  {% for post in posts %}
+  {% if post.photo %}
+      <!-- display projects -->
+      <div class="col-4">
+         <div class="card my-3 mx-3">
+          <ul class="meta">
+          <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By:{{post.user}}</a></li>
+          <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>Technology</a></li>
+          <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
+      </ul>
+          <img src="{{post.photo.url}}" class="img-thumbnail" alt="{{post.title}}">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.post |striptags }}</p>
+            <a href=""><button class="btn btn-dark">See more</button></a>  
+          </div>
+    </div>
+         </div>
+   {% endif %}
+    {% empty %}
+    <div class="row">
+          <h2 class="text-center">There are no posts yet</h2>
+    </div>
+
+{% endfor %}
+</div>
+  <!-- {{post.post}}
+  {{post.user}}
+  {{post.title}} -->
+<!-- <div class="container blog-page">
+    <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+            <div class="card single_post">
+                <div class="header">
+                    <h2><strong>Latest</strong> Post</h2>
+                </div>
+                <div class="body">
+                    <h3 class="m-t-0 m-b-5"><a href="blog-details.html">Apple Introduces Search Ads Basic</a></h3>
+                    <ul class="meta">
+                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: {{post.user}}</a></li>
+                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>{{post.title}}</a></li>                    </ul>
+                </div>
+                <div class="body">
+                    <div class="img-post m-b-15">
+                        <img src="{{post.photo.url}}" alt="Awesome Image">
+                        <div class="social_share">
+                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-facebook"></i></button>
+                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-twitter"></i></button>
+                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-instagram"></i></button>
+                        </div>
+                    </div>
+                    <p>{{post.post}}</p>
+                    <a href="blog-details.html" title="read more" class="btn btn-round btn-info">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+{% for neighbourhood in neighbourhoods %}
+{{neighbourhood.neighbourhood_name}}
+{{neighbourhood.neighbourhood_location}}
+
+{% endfor %}
 {% endblock %}
