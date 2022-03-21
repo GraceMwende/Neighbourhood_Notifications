@@ -6,13 +6,48 @@
 <!-- <a href="{% url 'new-post' %}"><button class="btn btn-default">Create new post</button></a>
 <a href="{% url 'new-business' %}"><button class="btn btn-default">Add a business</button></a>
 <a href="{% url 'business' %}"><button class="btn btn-default">View business</button></a> -->
+<section class="main">
+    <div class="wrapper">
+        <div class="left-col">
 
+            <div class="post">
+                {% for post in posts %}
+                {% if post.photo %}
+                <div class="info">
+                    <div class="user">
+                        <div class="profile-pic"><img src="img/cover 1.png" alt=""></div>
+                        <!-- <p class="username">{{post.user}}</p> -->
+                        <p class="text-center">Title: <b>{{post.title}}</b></p>
+                    </div>
+                    <img src="img/option.PNG" class="options" alt="">
+                </div>
+                <img src="{{post.photo.url}}" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <i class="fa-solid fa-thumbs-up icon"></i>
+                        <i class="fa-solid fa-message icon"></i>
+                        <i class="fa-solid fa-share save icon"></i>                    </div>
+                    <p class="description"><span><b>@{{post.user}}</b></span>{{post.post |striptags}}</p>
+                    <i class="zmdi zmdi-account col-blue"></i><p class="post-time d-inline me-5">Posted {{post.pub_date|timesince}} ago</p>
+                    <a href="{% url 'posts' post.id %}"><button class="comment-btn h1 pull-right"><b>View Post</b></button></a>
+                </div>
+                <!-- <div class="comment-wrapper">
+                    <img src="img/smile.PNG" class="icon" alt="">
+                    <input type="text" class="comment-box" placeholder="Add a comment"> 
+                    <button class="comment-btn">View Details</button>
+                </div> -->
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 
-<!-- bootsrap card -->
-<div class="container d-flex flex-wrap">
+<!-- bootsrap card 
+ <div class="container d-flex flex-wrap">
   {% for post in posts %}
   {% if post.photo %}
-      <!-- display projects -->
+      <!-- display projects 
       <div class="col-4">
          <div class="card my-3 mx-3">
           <ul class="meta">
@@ -35,7 +70,7 @@
     </div>
 
 {% endfor %}
-</div>
+</div> -->
   <!-- {{post.post}}
   {{post.user}}
   {{post.title}} -->
