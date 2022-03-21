@@ -15,16 +15,24 @@ class Neighbourhood(models.Model):
   def __str__(self):
     return self.neighbourhood_name
 
-  def save_neighbourhood(self):
+  def create_neighbourhood(self):
     self.save()
 
-  def delete_neighbourhood(self):
-    self.delete()
+  
 
   @classmethod
   def display_neighbourhhoods(cls):
     neighbourhoods = cls.objects.all()
     return neighbourhoods
+
+  @classmethod
+  def delete_neighbourhood(cls,id):
+    self.objects.filter(id=id).delete()
+
+  @classmethod
+  def find_neigborhood(cls,neigborhood_id):
+    neighbour = cls.objects.filter(id= neigborhood_id)
+    return neighbour
 
 class Users(models.Model):
   user_name = models.CharField(max_length=30)
@@ -44,8 +52,14 @@ class Business(models.Model):
   def save_business(self):
     self.save()
 
-  def delete_business(self):
-    self.delete()
+  @classmethod
+  def delete_business(cls,id):
+    self.objects.filter(id=id).delete()
+
+  @classmethod
+  def find_business(cls,id):
+    neighbour = cls.objects.filter(id= id)
+    return neighbour
 
   @classmethod
   def display_business(cls):
