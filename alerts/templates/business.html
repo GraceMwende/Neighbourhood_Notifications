@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+<div class="card">
+  {% for biz_item in business %}
+  <div class="card-header">{{biz_item.business_name}}</div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  {% endfor %}
+</div>
+<!-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
  {% for biz_item in business %}
  <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
   <div class="icon"><i class="bx bxl-dribbble"></i></div>
@@ -8,5 +18,5 @@
   <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
 </div>
  {% endfor %}
-</div>
+</div> -->
 {% endblock %}
