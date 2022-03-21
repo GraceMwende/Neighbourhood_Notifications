@@ -7,6 +7,9 @@ class Neighbourhood(models.Model):
   neighbourhood_name = models.TextField()
   neighbourhood_location = models.TextField()
   occupants_count = models.IntegerField()
+  health = models.CharField(max_length = 100, default='health@gmail.com')
+  police = models.CharField(max_length = 100, default='police@gmail.com')
+
   # admin = models.ForeignKey(Admin, on_delete=models.CASCADE)
 
   def __str__(self):
