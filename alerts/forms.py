@@ -39,3 +39,17 @@ class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         exclude = ['users',]
+
+# Create a UserUpdateForm to update username and email
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+# Create a ProfileUpdateForm
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image','neighbourhood']

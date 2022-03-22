@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'alerts',
     'bootstrap5',   
     'tinymce',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
