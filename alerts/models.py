@@ -89,7 +89,7 @@ class Post(models.Model):
 
   @classmethod
   def display_posts(cls):
-    posts = cls.objects.all().order_by('pub_date')
+    posts = cls.objects.all().order_by('-id')
     return posts
 
   # class Meta:
