@@ -18,6 +18,7 @@ def posts(request,post_id):
         raise Http404()
     return render(request,"post.html", {"post":post,"comments":comments})
 
+@login_required(login_url='/accounts/login/')
 def new_post(request):
   current_user = request.user
   if request.method == 'POST':

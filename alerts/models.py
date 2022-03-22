@@ -89,8 +89,11 @@ class Post(models.Model):
 
   @classmethod
   def display_posts(cls):
-    posts = cls.objects.all()
+    posts = cls.objects.all().order_by('pub_date')
     return posts
+
+  # class Meta:
+  #   ordering = ['pub_date']
 
 class Comment(models.Model):
   post = models.ForeignKey(Post, on_delete=models.CASCADE)
