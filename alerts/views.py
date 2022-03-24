@@ -79,7 +79,9 @@ def new_business(request):
     return render(request, 'new_business.html',{'form':form})
 
 def business(request):
-    business = Business.display_business()
+    biz = request.user.profile.neighbourhood.id
+    business = Business.display_business(biz)
+
     return render(request,'business.html',{"business":business,})
 
     return redirect('business')

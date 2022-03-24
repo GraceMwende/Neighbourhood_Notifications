@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="card my-2">
-  <h1 class="text-center"><u>Bussinesses available</u></h1>
+  <h1 class="text-center"><u>Businesses available in my neighbourhood</u></h1>
   {% for biz_item in business %}
   <div class="card-header">Name:{{biz_item.business_name}}</div>
   <div class="card-body">

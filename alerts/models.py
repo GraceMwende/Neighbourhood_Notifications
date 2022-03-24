@@ -62,13 +62,13 @@ class Business(models.Model):
     neighbour = cls.objects.filter(id= id)
     return neighbour
 
-  @classmethod
-  def display_business(cls):
-    posts = cls.objects.all()
-    return posts
+  # @classmethod
+  # def display_business(cls):
+  #   posts = cls.objects.all()
+  #   return posts
 
   @classmethod
-  def find_business(cls,id):
+  def display_business(cls,id):
     neighbourhood_filter = Neighbourhood.objects.filter(id=id).first()
     business_in_neighbourhood = cls.objects.filter(neighbourhood=neighbourhood_filter).all()
     return business_in_neighbourhood
