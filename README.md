@@ -36,9 +36,9 @@ https://neighbourhoods254.herokuapp.com/
     - python3 manage.py runserver
 - Open the application in browser 127.0.0.1:8000.
 
-## Known bugs
+# Known bugs
 Bug on registering
-# Use default username :Micheni
+Use default username :Micheni
                Password:Graceemis98
 
 ## Technologies Used
