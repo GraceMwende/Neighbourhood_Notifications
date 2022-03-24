@@ -37,7 +37,7 @@ https://neighbourhoods254.herokuapp.com/
 - Open the application in browser 127.0.0.1:8000.
 
 # Known bugs
-Bug on registering
+Bug on registering after deploying
 Use default username :Micheni
                Password:Graceemis98
 
