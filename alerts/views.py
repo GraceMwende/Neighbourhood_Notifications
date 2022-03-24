@@ -84,7 +84,7 @@ def business(request):
 
     return redirect('business')
 
-@login_required
+@login_required(login_url='/accounts/login/')
 def profile(request):
   if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
