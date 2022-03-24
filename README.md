@@ -3,10 +3,6 @@ web application that allows you to be in the loop about everything happening in 
 
 ## Live Link
 
-
-<!-- #### Application Description
- -->
-
 #### By **List of contributors**
 
 @GraceMwende
