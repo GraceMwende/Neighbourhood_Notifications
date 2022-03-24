@@ -67,6 +67,12 @@ class Business(models.Model):
     posts = cls.objects.all()
     return posts
 
+  @classmethod
+  def find_business(cls,id):
+    neighbourhood_filter = Neighbourhood.objects.filter(id=id).first()
+    business_in_neighbourhood = cls.objects.filter(neighbourhood=neighbourhood_filter).all()
+    return business_in_neighbourhood
+
 class Profile(models.Model):
   user =  models.OneToOneField(User, on_delete=models.CASCADE)
   image = models.ImageField(default='default.jpg',upload_to='profile_pics')
