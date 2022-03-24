@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card">
+<div class="card my-2">
+  <h1 class="text-center"><u>Bussinesses available</u></h1>
   {% for biz_item in business %}
-  <div class="card-header">{{biz_item.business_name}}</div>
+  <div class="card-header">Name:{{biz_item.business_name}}</div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">Neighbourhood: {{biz_item.neighbourhood}}</h5>
+    <p class="card-text">Our Email:{{biz_item.business_email_address}}</p>
+    <a href="#" class="btn btn-warning">Business</a>
   </div>
   {% endfor %}
 </div>
